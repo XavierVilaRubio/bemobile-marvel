@@ -26,5 +26,5 @@ export const getAllHeroes = async () => {
 	const res = await fetchData<HeroResponse[]>(`${BASE_URL}/all.json`, {
 		cache: "force-cache",
 	});
-	return res;
+	return res.slice(0, 50);
 };

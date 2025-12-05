@@ -1,4 +1,6 @@
+import clsx from "clsx";
 import type { Hero } from "~/types";
+import FavButton from "./fav-button";
 
 const CharacterCard = ({ hero }: { hero: Hero }) => {
 	return (
@@ -20,15 +22,16 @@ const CharacterCard = ({ hero }: { hero: Hero }) => {
 			<div className="grid text-white">
 				<div className="col-start-1 row-start-1 flex items-center justify-between bg-black px-4 pt-4 pb-6">
 					<h2 className="text-sm uppercase leading-none">{hero.name}</h2>
-					<img src="/fav-icon.svg" alt="favs" className="size-3" />
+					<FavButton characterId={hero.id} variant="inverted" />
 				</div>
-				<div className="col-start-1 row-start-1 flex items-center justify-between bg-primary px-4 pt-4 pb-6 transition-all duration-300 [clip-path:inset(0%_0%_100%_0%)] group-hover:[clip-path:inset(0%_0%_0%_0%)]">
+				<div
+					className={clsx(
+						"col-start-1 row-start-1 flex items-center justify-between bg-primary px-4 pt-4 pb-6",
+						"transition-all duration-300 [clip-path:inset(0%_0%_100%_0%)] group-hover:[clip-path:inset(0%_0%_0%_0%)]",
+					)}
+				>
 					<h2 className="text-sm uppercase leading-none">{hero.name}</h2>
-					<img
-						src="/fav-icon.svg"
-						alt="favs"
-						className="size-3 brightness-0 invert"
-					/>
+					<FavButton characterId={hero.id} />
 				</div>
 			</div>
 		</div>
