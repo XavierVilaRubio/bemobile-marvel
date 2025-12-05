@@ -22,9 +22,14 @@ type HeroResponse = {
 	};
 };
 
-export const getAllHeroes = async () => {
+export const getHeroes = async ({ search }: { search: string | null }) => {
 	const res = await fetchData<HeroResponse[]>(`${BASE_URL}/all.json`, {
 		cache: "force-cache",
 	});
+	if (search)
+		return res.filter((hero) =>
+			hero.name.toLowerCase().includes(search.toLowerCase()),
+		);
+
 	return res.slice(0, 50);
 };
