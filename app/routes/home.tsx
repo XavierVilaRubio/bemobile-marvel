@@ -1,8 +1,8 @@
 import { Form, useSearchParams, useSubmit } from "react-router";
 import SearchIcon from "~/components/icons/search-icon";
 import CharacterCard from "~/components/ui/character-card";
-import type { Hero } from "~/types";
-import { getHeroes } from "../services/api";
+import type { Character } from "~/types";
+import { getCharacters } from "../services/api";
 import type { Route } from "./+types/home";
 
 export function meta(_: Route.MetaArgs) {
@@ -15,13 +15,13 @@ export function meta(_: Route.MetaArgs) {
 export async function loader({ request }: Route.LoaderArgs) {
 	const url = new URL(request.url);
 	const search = url.searchParams.get("search");
-	const heroes = await getHeroes({ search });
+	const characters = await getCharacters({ search });
 	return {
-		heroes: heroes.map((hero) => ({
-			id: hero.id,
-			name: hero.name,
-			image: hero.images.lg,
-		})) as Hero[],
+		characters: characters.map((character) => ({
+			id: character.id,
+			name: character.name,
+			image: character.images.lg,
+		})) as Character[],
 	};
 }
 
@@ -65,7 +65,7 @@ export default function Home({ loaderData }: Route.ComponentProps) {
 
 	const submit = useSubmit();
 
-	const { heroes } = loaderData;
+	const { characters } = loaderData;
 	return (
 		<div className="container m-auto space-y-6 pt-12">
 			<div className="space-y-3">
@@ -85,11 +85,11 @@ export default function Home({ loaderData }: Route.ComponentProps) {
 						/>
 					</div>
 				</Form>
-				<p className="text-sm">{heroes.length} RESULTS</p>
+				<p className="text-sm">{characters.length} RESULTS</p>
 			</div>
 			<div className="my-8 grid grid-cols-2 gap-4 px-4 lg:grid-cols-7 lg:px-0">
-				{heroes.map((hero) => (
-					<CharacterCard key={hero.id} hero={hero} />
+				{characters.map((character) => (
+					<CharacterCard key={character.id} character={character} />
 				))}
 			</div>
 		</div>

@@ -11,7 +11,7 @@ async function fetchData<T>(url: string, options?: RequestInit): Promise<T> {
 
 const BASE_URL = "https://cdn.jsdelivr.net/gh/akabab/superhero-api@0.3.0/api";
 
-type HeroResponse = {
+type SuperheroResponse = {
 	id: number;
 	name: string;
 	images: {
@@ -22,15 +22,15 @@ type HeroResponse = {
 	};
 };
 
-export const getHeroes = async (
+export const getCharacters = async (
 	{ search }: { search: string | null } = { search: null },
 ) => {
-	const res = await fetchData<HeroResponse[]>(`${BASE_URL}/all.json`, {
+	const res = await fetchData<SuperheroResponse[]>(`${BASE_URL}/all.json`, {
 		cache: "force-cache",
 	});
 	if (search)
-		return res.filter((hero) =>
-			hero.name.toLowerCase().includes(search.toLowerCase()),
+		return res.filter((character) =>
+			character.name.toLowerCase().includes(search.toLowerCase()),
 		);
 
 	return res.slice(0, 50);

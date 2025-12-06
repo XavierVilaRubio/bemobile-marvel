@@ -1,8 +1,8 @@
 import clsx from "clsx";
-import type { Hero } from "~/types";
+import type { Character } from "~/types";
 import FavButton from "./fav-button";
 
-const CharacterCard = ({ hero }: { hero: Hero }) => {
+const CharacterCard = ({ character }: { character: Character }) => {
 	return (
 		<div
 			className="group h-full gap-0 overflow-hidden"
@@ -14,15 +14,15 @@ const CharacterCard = ({ hero }: { hero: Hero }) => {
 			}
 		>
 			<img
-				src={hero.image}
-				alt={hero.name}
+				src={character.image}
+				alt={character.name}
 				className="aspect-square w-full object-cover"
 			/>
 			<div className="h-[5px] w-full bg-primary"></div>
 			<div className="grid text-white">
 				<div className="col-start-1 row-start-1 flex items-center justify-between bg-black px-4 pt-4 pb-6">
-					<h2 className="text-sm uppercase leading-none">{hero.name}</h2>
-					<FavButton characterId={hero.id} variant="inverted" />
+					<h2 className="text-sm uppercase leading-none">{character.name}</h2>
+					<FavButton characterId={character.id} variant="inverted" />
 				</div>
 				<div
 					className={clsx(
@@ -30,8 +30,8 @@ const CharacterCard = ({ hero }: { hero: Hero }) => {
 						"transition-all duration-300 [clip-path:inset(0%_0%_100%_0%)] group-hover:[clip-path:inset(0%_0%_0%_0%)]",
 					)}
 				>
-					<h2 className="text-sm uppercase leading-none">{hero.name}</h2>
-					<FavButton characterId={hero.id} />
+					<h2 className="text-sm uppercase leading-none">{character.name}</h2>
+					<FavButton characterId={character.id} />
 				</div>
 			</div>
 		</div>
