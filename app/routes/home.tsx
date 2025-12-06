@@ -1,6 +1,6 @@
-import { Form, useSearchParams, useSubmit } from "react-router";
-import SearchIcon from "~/components/icons/search-icon";
+import { useSearchParams, useSubmit } from "react-router";
 import CharacterCard from "~/components/ui/character-card";
+import SearchBar from "~/components/ui/search-bar";
 import type { Character } from "~/types";
 import { getCharacters } from "../services/api";
 import type { Route } from "./+types/home";
@@ -69,22 +69,12 @@ export default function Home({ loaderData }: Route.ComponentProps) {
 	return (
 		<div className="container m-auto space-y-6 pt-12">
 			<div className="space-y-3">
-				<Form
+				<SearchBar
+					defaultValue={search}
 					onChange={(event) => {
 						submit(event.currentTarget);
 					}}
-				>
-					<div className="flex items-center gap-2 border-black border-b pb-2">
-						<SearchIcon className="size-3" />
-						<input
-							defaultValue={search}
-							name="search"
-							type="text"
-							placeholder="Search a character..."
-							className="w-full text-base uppercase placeholder:uppercase"
-						/>
-					</div>
-				</Form>
+				/>
 				<p className="text-sm">{characters.length} RESULTS</p>
 			</div>
 			<div className="my-8 grid grid-cols-2 gap-4 px-4 lg:grid-cols-7 lg:px-0">
