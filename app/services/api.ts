@@ -22,7 +22,9 @@ type HeroResponse = {
 	};
 };
 
-export const getHeroes = async ({ search }: { search: string | null }) => {
+export const getHeroes = async (
+	{ search }: { search: string | null } = { search: null },
+) => {
 	const res = await fetchData<HeroResponse[]>(`${BASE_URL}/all.json`, {
 		cache: "force-cache",
 	});

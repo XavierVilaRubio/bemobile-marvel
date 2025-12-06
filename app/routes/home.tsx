@@ -67,8 +67,8 @@ export default function Home({ loaderData }: Route.ComponentProps) {
 
 	const { heroes } = loaderData;
 	return (
-		<div className="container m-auto">
-			<div className="mt-12 mb-6 space-y-3">
+		<div className="container m-auto space-y-6 pt-12">
+			<div className="space-y-3">
 				<Form
 					onChange={(event) => {
 						submit(event.currentTarget);
