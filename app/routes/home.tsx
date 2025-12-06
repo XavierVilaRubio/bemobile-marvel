@@ -62,7 +62,7 @@ export default function Home({ loaderData }: Route.ComponentProps) {
 
 	const { characters } = loaderData;
 	return (
-		<div className="container m-auto space-y-6 pt-12">
+		<div className="container m-auto space-y-6 px-4 pt-12 lg:px-0">
 			<div className="space-y-3">
 				<SearchBar
 					defaultValue={search}
@@ -72,7 +72,7 @@ export default function Home({ loaderData }: Route.ComponentProps) {
 				/>
 				<p className="text-sm">{characters.length} RESULTS</p>
 			</div>
-			<div className="my-8 grid grid-cols-2 gap-4 px-4 lg:grid-cols-7 lg:px-0">
+			<div className="my-8 grid grid-cols-2 gap-4 lg:grid-cols-7">
 				{characters.map((character) => (
 					<CharacterCard key={character.id} character={character} />
 				))}
