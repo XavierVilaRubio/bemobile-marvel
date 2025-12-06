@@ -1,10 +1,12 @@
 import clsx from "clsx";
+import { Link } from "react-router";
 import type { Character } from "~/types";
 import FavButton from "./fav-button";
 
 const CharacterCard = ({ character }: { character: Character }) => {
 	return (
-		<div
+		<Link
+			to={`/character/${character.id}`}
 			className="group h-full gap-0 overflow-hidden"
 			style={
 				{
@@ -14,7 +16,7 @@ const CharacterCard = ({ character }: { character: Character }) => {
 			}
 		>
 			<img
-				src={character.image}
+				src={character.images.lg}
 				alt={character.name}
 				className="aspect-square w-full object-cover"
 			/>
@@ -34,7 +36,7 @@ const CharacterCard = ({ character }: { character: Character }) => {
 					<FavButton characterId={character.id} />
 				</div>
 			</div>
-		</div>
+		</Link>
 	);
 };
 

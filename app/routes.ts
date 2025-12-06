@@ -9,5 +9,6 @@ export default [
 	layout("routes/layout.tsx", [
 		index("routes/home.tsx"),
 		route("favs", "routes/favs.tsx"),
+		route("character/:characterId", "routes/character.tsx"),
 	]),
 ] satisfies RouteConfig;

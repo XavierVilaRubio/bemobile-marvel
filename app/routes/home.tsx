@@ -1,7 +1,6 @@
 import { useSearchParams, useSubmit } from "react-router";
 import CharacterCard from "~/components/ui/character-card";
 import SearchBar from "~/components/ui/search-bar";
-import type { Character } from "~/types";
 import { getCharacters } from "../services/api";
 import type { Route } from "./+types/home";
 
@@ -17,11 +16,7 @@ export async function loader({ request }: Route.LoaderArgs) {
 	const search = url.searchParams.get("search");
 	const characters = await getCharacters({ search });
 	return {
-		characters: characters.map((character) => ({
-			id: character.id,
-			name: character.name,
-			image: character.images.lg,
-		})) as Character[],
+		characters,
 	};
 }
 

@@ -1,3 +1,5 @@
+import type { Character } from "~/types";
+
 async function fetchData<T>(url: string, options?: RequestInit): Promise<T> {
 	const response = await fetch(url, options);
 
@@ -11,21 +13,10 @@ async function fetchData<T>(url: string, options?: RequestInit): Promise<T> {
 
 const BASE_URL = "https://cdn.jsdelivr.net/gh/akabab/superhero-api@0.3.0/api";
 
-type SuperheroResponse = {
-	id: number;
-	name: string;
-	images: {
-		xs: string;
-		sm: string;
-		md: string;
-		lg: string;
-	};
-};
-
 export const getCharacters = async (
 	{ search }: { search: string | null } = { search: null },
 ) => {
-	const res = await fetchData<SuperheroResponse[]>(`${BASE_URL}/all.json`, {
+	const res = await fetchData<Character[]>(`${BASE_URL}/all.json`, {
 		cache: "force-cache",
 	});
 	if (search)
@@ -34,4 +25,11 @@ export const getCharacters = async (
 		);
 
 	return res.slice(0, 50);
+};
+
+export const getCharacter = async (id: number) => {
+	const res = await fetchData<Character>(`${BASE_URL}/id/${id}.json`, {
+		cache: "force-cache",
+	});
+	return res;
 };

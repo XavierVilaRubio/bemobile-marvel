@@ -2,7 +2,6 @@ import { useSearchParams, useSubmit } from "react-router";
 import { useLocalStorage } from "usehooks-ts";
 import CharacterCard from "~/components/ui/character-card";
 import SearchBar from "~/components/ui/search-bar";
-import type { Character } from "~/types";
 import { getCharacters } from "../services/api";
 import type { Route } from "./+types/favs";
 
@@ -16,11 +15,7 @@ export function meta(_: Route.MetaArgs) {
 export async function clientLoader() {
 	const characters = await getCharacters();
 	return {
-		characters: characters.map((character) => ({
-			id: character.id,
-			name: character.name,
-			image: character.images.lg,
-		})) as Character[],
+		characters,
 	};
 }
 
