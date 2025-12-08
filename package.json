@@ -9,7 +9,10 @@
 		"typecheck": "react-router typegen && tsc",
 		"lint": "biome lint .",
 		"format": "biome format --write .",
-		"check": "biome check --write ."
+		"check": "biome check --write .",
+		"test": "NODE_ENV=test vitest run",
+		"test:watch": "NODE_ENV=test vitest",
+		"test:ui": "NODE_ENV=test vitest --ui"
 	},
 	"dependencies": {
 		"@react-router/node": "^7.9.2",
@@ -25,13 +28,19 @@
 		"@biomejs/biome": "2.3.8",
 		"@react-router/dev": "^7.9.2",
 		"@tailwindcss/vite": "^4.1.13",
+		"@testing-library/jest-dom": "^6.9.1",
+		"@testing-library/react": "^16.3.0",
+		"@testing-library/user-event": "^14.6.1",
 		"@types/node": "^22",
 		"@types/react": "^19.1.13",
 		"@types/react-dom": "^19.1.9",
+		"@vitest/ui": "^4.0.15",
+		"jsdom": "^27.2.0",
 		"lefthook": "^2.0.4",
 		"tailwindcss": "^4.1.13",
 		"typescript": "^5.9.2",
 		"vite": "^7.1.7",
-		"vite-tsconfig-paths": "^5.1.4"
+		"vite-tsconfig-paths": "^5.1.4",
+		"vitest": "^4.0.15"
 	}
 }
