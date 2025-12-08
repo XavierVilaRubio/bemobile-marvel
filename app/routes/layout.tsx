@@ -6,7 +6,7 @@ export default function Layout() {
 		<>
 			<header className="bg-black px-4 py-4 lg:px-0">
 				<div className="container m-auto flex items-center justify-between">
-					<Link to="/">
+					<Link to="/" aria-label="Go to home page">
 						<img src="/marvel-logo.svg" alt="logo" />
 					</Link>
 					<FavLink />
