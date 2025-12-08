@@ -19,11 +19,11 @@ export default function Character({ loaderData }: Route.ComponentProps) {
 				} as React.CSSProperties
 			}
 		>
-			<div className="container m-auto flex flex-col lg:max-w-1/2 lg:flex-row lg:gap-12">
+			<div className="container m-auto flex flex-col md:w-full md:max-w-full md:flex-row lg:max-w-1/2 lg:gap-12">
 				<img
 					src={character.images.lg}
 					alt={character.name}
-					className="aspect-square w-full object-cover lg:max-w-80"
+					className="aspect-square w-full object-cover md:max-w-72 lg:max-w-80"
 				/>
 				<div className="my-auto space-y-6 px-4 pt-6 pb-12 lg:p-0">
 					<div className="flex items-center justify-between">

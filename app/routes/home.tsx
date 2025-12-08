@@ -59,7 +59,7 @@ export default function Home({ loaderData }: Route.ComponentProps) {
 				/>
 				<p className="text-sm">{selectedCharacters.length} RESULTS</p>
 			</div>
-			<div className="my-8 grid grid-cols-2 gap-4 lg:grid-cols-7">
+			<div className="my-8 grid grid-cols-2 gap-4 md:grid-cols-4 lg:grid-cols-7">
 				{selectedCharacters.map((character) => (
 					<CharacterCard key={character.id} character={character} />
 				))}
