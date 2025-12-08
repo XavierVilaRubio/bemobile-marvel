@@ -12,45 +12,7 @@ export function meta(_: Route.MetaArgs) {
 	];
 }
 
-// export async function loader({ request }: Route.LoaderArgs) {
-// 	const url = new URL(request.url);
-// 	const search = url.searchParams.get("search");
-// 	const characters = await getCharacters({ search });
-// 	return {
-// 		characters,
-// 	};
-// }
-
-// // ref: https://programmingarehard.com/2025/02/24/debouncing-in-react-router-v7.html/
-// function requestNotCancelled(request: Request, ms: number) {
-// 	const { signal } = request;
-// 	return new Promise((resolve, reject) => {
-// 		// If the signal is aborted by the time it reaches this, reject
-// 		if (signal.aborted) {
-// 			reject(signal.reason);
-// 			return;
-// 		}
-
-// 		// Schedule the resolve function to be called in
-// 		// the future a certain number of milliseconds
-// 		const timeoutId = setTimeout(resolve, ms);
-
-// 		// Listen for the abort event. If it fires, reject
-// 		signal.addEventListener(
-// 			"abort",
-// 			() => {
-// 				clearTimeout(timeoutId);
-// 				reject(signal.reason);
-// 			},
-// 			{ once: true },
-// 		);
-// 	});
-// }
-
-export async function clientLoader({
-	request,
-	serverLoader,
-}: Route.ClientLoaderArgs) {
+export async function clientLoader({ request }: Route.ClientLoaderArgs) {
 	const url = new URL(request.url);
 	const search = url.searchParams.get("search");
 	const favs = url.searchParams.get("favs") === "true";

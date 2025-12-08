@@ -16,12 +16,7 @@ const FavLink = () => {
 		<button
 			type="button"
 			className="flex cursor-pointer items-center gap-2"
-			onClick={() =>
-				setSearchParams((searchParams) => {
-					searchParams.set("favs", "true");
-					return searchParams;
-				})
-			}
+			onClick={() => setSearchParams({ favs: "true" })}
 		>
 			<FavIcon />
 			<span className="text-white">{favsCount}</span>
