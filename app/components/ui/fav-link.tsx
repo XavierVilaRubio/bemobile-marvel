@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { Link } from "react-router";
+import { useSearchParams } from "react-router";
 import { useLocalStorage } from "usehooks-ts";
 import FavIcon from "../icons/fav-icon";
 
@@ -10,11 +10,22 @@ const FavLink = () => {
 		setFavsCount(favs.length);
 	}, [favs]);
 
+	const [, setSearchParams] = useSearchParams();
+
 	return (
-		<Link to="/favs" className="flex items-center gap-2">
+		<button
+			type="button"
+			className="flex cursor-pointer items-center gap-2"
+			onClick={() =>
+				setSearchParams((searchParams) => {
+					searchParams.set("favs", "true");
+					return searchParams;
+				})
+			}
+		>
 			<FavIcon />
 			<span className="text-white">{favsCount}</span>
-		</Link>
+		</button>
 	);
 };
 
