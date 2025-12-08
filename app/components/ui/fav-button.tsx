@@ -1,5 +1,5 @@
 import clsx from "clsx";
-import type { SVGProps } from "react";
+import { type SVGProps, useEffect, useState } from "react";
 import { useLocalStorage } from "usehooks-ts";
 import FavIcon from "../icons/fav-icon";
 
@@ -25,9 +25,13 @@ const FavButton = ({
 	variant?: "default" | "inverted";
 } & SVGProps<SVGSVGElement>) => {
 	const [favs, setFavs] = useLocalStorage<number[]>("favs-characters", []);
+	const [isFav, setIsFav] = useState(false);
+	useEffect(() => {
+		setIsFav(favs.includes(characterId));
+	}, [favs, characterId]);
 
-	const isFav = favs.includes(characterId);
-	const handleFav = () => {
+	const handleFav = (e: React.MouseEvent<HTMLButtonElement>) => {
+		e.preventDefault();
 		if (isFav) {
 			setFavs((p) => p.filter((id) => id !== characterId));
 		} else {
