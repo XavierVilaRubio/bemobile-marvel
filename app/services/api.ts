@@ -24,7 +24,7 @@ export const getCharacters = async (
 			character.name.toLowerCase().includes(search.toLowerCase()),
 		);
 
-	return res.slice(0, 50);
+	return res;
 };
 
 export const getCharacter = async (id: number) => {

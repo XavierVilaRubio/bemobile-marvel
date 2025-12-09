@@ -45,7 +45,7 @@ export default function Home({ loaderData }: Route.ComponentProps) {
 				.filter((character) =>
 					character.name.toLowerCase().includes(search.toLowerCase()),
 				)
-		: characters;
+		: characters.slice(0, 50);
 	return (
 		<div className="container m-auto space-y-6 px-4 pt-12 lg:px-0">
 			{isFavs && <p className="font-bold text-2xl uppercase">favorites</p>}
